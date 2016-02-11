@@ -2,7 +2,7 @@ import {Component} from 'angular2/core';
 
 @Component({
   selector: 'about',
-  template: `patrick@AngularClass.com`
+  template: require('./about.html')
 })
 export class About {
   constructor() {
