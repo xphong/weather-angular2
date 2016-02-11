@@ -1,8 +1,8 @@
 <div class="row weather">
   <div>
     <div id="form-control" class="col-xs-12 form-area">
-      <form>
-        <input type="text" class="form-control" placeholder="City" required>
+      <form (ngSubmit)="searchForWeather()">
+        <input [(ngModel)]="city" type="text" class="form-control" placeholder="City" required>
         <div>
           <span class="help-block">{{ errorMsg }}</span>
         </div>
@@ -17,7 +17,7 @@
           <th>Humidity</th>
           <th>Wind</th>
         </tr>
-        <!--<tr ng-repeat>
+        <!--<tr *ngFor="#forecast of forecasts">
           <td>{{ forecast.date }}</td>
           <td>{{ forecast.temp }}</td>
           <td>{{ forecast.humidity }}</td>

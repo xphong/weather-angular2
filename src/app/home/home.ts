@@ -19,6 +19,7 @@ import {XLarge} from './directives/x-large';
 })
 export class Home {
   data = {};
+  city = '';
 
   constructor(public title: Title) {
 
@@ -27,6 +28,10 @@ export class Home {
   ngOnInit() {
     console.log('hello `Home` component');
     // this.title.getData().subscribe(data => this.data = data);
+  }
+
+  searchForWeather() {
+	  console.log(this.city);
   }
 
 }
