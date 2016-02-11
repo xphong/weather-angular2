@@ -14,7 +14,7 @@ import {MockBackend} from 'angular2/http/testing';
 
 // Load the implementations that should be tested
 import {Home} from './home';
-import {Title} from '../shared/services/title';
+import {WeatherService} from '../shared/services/weather';
 
 describe('Home', () => {
   // provide our implementations or mocks to the dependency injector
@@ -27,17 +27,12 @@ describe('Home', () => {
       },
       deps: [MockBackend, BaseRequestOptions]
     }),
-
-    Title,
+    WeatherService,
     Home
   ]);
 
   it('should have default data', inject([ Home ], (home) => {
-    expect(home.data).toEqual({ value: '' });
-  }));
-
-  it('should have a title', inject([ Home ], (home) => {
-    expect(!!home.title).toEqual(true);
+    expect(home.data).toEqual({});
   }));
 
   it('should log ngOnInit', inject([ Home ], (home) => {

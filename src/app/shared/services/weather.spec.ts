@@ -11,9 +11,9 @@ import {BaseRequestOptions, Http} from 'angular2/http';
 import {MockBackend} from 'angular2/http/testing';
 
 
-import {Title} from './title';
+import {WeatherService} from './weather';
 
-describe('Title', () => {
+describe('WeatherService', () => {
   beforeEachProviders(() => [
     BaseRequestOptions,
     MockBackend,
@@ -24,21 +24,17 @@ describe('Title', () => {
       deps: [MockBackend, BaseRequestOptions]
     }),
 
-    Title
+    WeatherService
   ]);
 
 
-  it('should have http', inject([ Title ], (title) => {
-    expect(!!title.http).toEqual(true);
+  it('should have http', inject([ WeatherService ], (weather) => {
+    expect(!!weather.http).toEqual(true);
   }));
 
-  it('should get data from the server', inject([ Title ], (title) => {
-    spyOn(console, 'log');
-    expect(console.log).not.toHaveBeenCalled();
-
-    title.getData();
-    expect(console.log).toHaveBeenCalled();
-    expect(title.getData()).toEqual({ value: 'AngularClass' });
+  it('should get data from the server', inject([ WeatherService ], (weather) => {
+    weather.getData();
+    expect(weather.getData()).toEqual({ value: 'AngularClass' });
   }));
 
 });

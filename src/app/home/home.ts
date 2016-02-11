@@ -1,13 +1,13 @@
 import {Component} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
 
-import {Title} from '../shared/services/title';
+import {WeatherService} from '../shared/services/weather';
 import {XLarge} from './directives/x-large';
 
 @Component({
   selector: 'home',
   providers: [
-    Title
+    WeatherService
   ],
   directives: [
     ...FORM_DIRECTIVES,
@@ -21,7 +21,7 @@ export class Home {
   data = {};
   city = '';
 
-  constructor(public title: Title) {
+  constructor(private _weatherService: WeatherService) {
 
   }
 
