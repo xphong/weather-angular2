@@ -1,5 +1,5 @@
 # weather-angular2
-v2.0.0-beta.0
+v2.0.0-beta
 
 ## Quickstart
 To run dev server:
@@ -26,3 +26,7 @@ npm test
 * Angular 2
 * TypeScript
 * Webpack
+
+## TODO
+* Add route for set city
+* Protractor tests
