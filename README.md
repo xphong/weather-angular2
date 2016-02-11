@@ -2,13 +2,13 @@
 v2.0.0-beta.0
 
 ## Quickstart
-* To run dev server:
+To run dev server:
 
 ```
 npm start
 ```
 
-* To run tests:
+To run tests:
 
 ```
 npm test
