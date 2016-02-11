@@ -1,6 +1,30 @@
-<div>
-  <span x-large>Your Content Here</span>
-  <input type="text" [value]="data.value" (input)="data.value = $event.target.value" autofocus>
-
-  <pre>this.data = {{ data | json }}</pre>
+<div class="row weather">
+  <div>
+    <div id="form-control" class="col-xs-12 form-area">
+      <form>
+        <input type="text" class="form-control" placeholder="City" required>
+        <div>
+          <span class="help-block">{{ errorMsg }}</span>
+        </div>
+        <button type="submit" class="go-btn btn btn-lg btn-success btn-block">Search</button>
+      </form>
+    </div>
+    <div class="reveal-animation">
+      <table class="table reveal-animation">
+        <tr>
+          <th>Date</th>
+          <th>Temperature</th>
+          <th>Humidity</th>
+          <th>Wind</th>
+        </tr>
+        <!--<tr ng-repeat>
+          <td>{{ forecast.date }}</td>
+          <td>{{ forecast.temp }}</td>
+          <td>{{ forecast.humidity }}</td>
+          <td>{{ forecast.wind }}</td>
+        </tr>-->
+      </table>
+      <h4>Average pressure for this week: {{avgPressure}} kPa</h4>
+    </div>
+  </div>
 </div>

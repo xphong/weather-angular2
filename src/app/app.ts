@@ -18,7 +18,7 @@ import {Home} from './home/home';
   { path: '/**', redirectTo: ['Home'] }
 ])
 export class App {
-  name = 'Weather';
+  title = 'Weather App';
 
   constructor() {
 

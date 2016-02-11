@@ -18,7 +18,7 @@ import {XLarge} from './directives/x-large';
   template: require('./home.html')
 })
 export class Home {
-  data = { value: '' };
+  data = {};
 
   constructor(public title: Title) {
 
