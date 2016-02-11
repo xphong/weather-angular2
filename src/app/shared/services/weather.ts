@@ -1,5 +1,6 @@
 import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class WeatherService {
@@ -14,7 +15,13 @@ export class WeatherService {
     let url = this.apiUrl + '?q=' + city + '&cnt=7&mode=json&units=metric&appid=' + this.apiKey;
 
     return this.http.get(url)
-                    .map(res => res.json());
+                    .map(res => res.json())
+                    .catch(this.handleError);
+  }
+
+  handleError (error) {
+    console.error(error);
+    return Observable.throw(error.json().error || 'Server error');
   }
 
 }

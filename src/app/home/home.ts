@@ -20,6 +20,7 @@ import {XLarge} from './directives/x-large';
 export class Home {
   forecasts = [];
   city = '';
+  errorMessage = '';
 
   constructor(public weatherService: WeatherService) {
 
@@ -31,9 +32,9 @@ export class Home {
 
   searchForWeather() {
     this.weatherService.getForecast(this.city)
-        .subscribe((data) => {
+        .subscribe(data => {
           if (data.list && data.list.length > 0) {
-            this.forecasts = data.list.map((forecast) => {
+            this.forecasts = data.list.map(forecast => {
               return {
                 temp: forecast.temp.day + '°C ' + forecast.weather[0].main,
                 date: this._convertUTC(forecast.dt),
@@ -42,8 +43,14 @@ export class Home {
                 pressure: this._formatPressure(forecast.pressure)
               }
             });
+            this.errorMessage = '';
           }
-        });
+          else {
+            this.errorMessage = 'No forecasts found for this city';
+          }
+        },
+        error => this.errorMessage = error.message
+        );
   }
 
   _formatPressure = function (pressure) {
