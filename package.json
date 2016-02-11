@@ -95,13 +95,6 @@
     "webpack-dev-server": "^1.14.1",
     "webpack-md5-hash": "^0.0.4"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
-  },
-  "bugs": {
-    "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
-  },
   "engines": {
     "node": ">= 4.2.1 <= 5",
     "npm": ">= 3"

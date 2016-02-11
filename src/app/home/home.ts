@@ -41,15 +41,18 @@ export class Home {
                 humidity: forecast.humidity + '%',
                 wind: this._getWindDirection(forecast.deg) + ' ' + forecast.speed + ' km/h',
                 pressure: this._formatPressure(forecast.pressure)
-              }
+              };
             });
             this.errorMessage = '';
-          }
-          else {
+          } else {
+            this.forecasts = [];
             this.errorMessage = 'No forecasts found for this city';
           }
         },
-        error => this.errorMessage = error.message
+        error => {
+          this.forecasts = [];
+          this.errorMessage = error.message
+        }
         );
   }
 
@@ -69,31 +72,23 @@ export class Home {
   _getWindDirection = function (degrees) {
       let direction;
 
-      if (degrees === 0){
+      if (degrees === 0) {
         direction = 'N';
-      }
-      else if (degrees > 0 && degrees < 90) {
+      } else if (degrees > 0 && degrees < 90) {
         direction = 'NE';
-      }
-      else if (degrees === 90) {
+      } else if (degrees === 90) {
         direction = 'E';
-      }
-      else if (degrees > 90 && degrees < 180) {
+      } else if (degrees > 90 && degrees < 180) {
         direction = 'SE';
-      }
-      else if (degrees === 180){
+      } else if (degrees === 180) {
         direction = 'S';
-      }
-      else if (degrees > 180 && degrees < 270) {
+      } else if (degrees > 180 && degrees < 270) {
         direction = 'SW';
-      }
-      else if (degrees === 270) {
+      } else if (degrees === 270) {
         direction = 'W';
-      }
-      else if (degrees > 270 && degrees < 360) {
+      } else if (degrees > 270 && degrees < 360) {
         direction = 'NW';
-      }
-      else {
+      } else {
         direction = '';
       }
 
