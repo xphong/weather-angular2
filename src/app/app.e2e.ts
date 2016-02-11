@@ -1,6 +1,3 @@
- /*
-  * TODO: ES5 for now until I make a webpack plugin for protractor
-  */
 describe('App', () => {
 
   beforeEach(() => {
@@ -10,7 +7,7 @@ describe('App', () => {
 
   it('should have a title', () => {
     let subject = browser.getTitle();
-    let result  = 'Angular2 Webpack Starter by @gdi2990 from @AngularClass';
+    let result  = 'Weather App';
     expect(subject).toEqual(result);
   });
 
@@ -23,12 +20,6 @@ describe('App', () => {
   it('should have <main>', () => {
     let subject = element(by.css('app main')).isPresent();
     let result  = true;
-    expect(subject).toEqual(result);
-  });
-
-  it('should have <footer>', () => {
-    let subject = element(by.css('app footer')).getText();
-    let result  = 'WebPack Angular 2 Starter by @AngularClass';
     expect(subject).toEqual(result);
   });
 
