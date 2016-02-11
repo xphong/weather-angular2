@@ -1,0 +1,9 @@
+.header {
+  margin-bottom: 0;
+}
+.navbar {
+  border-radius: 0;
+}
+  .navbar .navbar-brand {
+      color: #FFF;
+  }
