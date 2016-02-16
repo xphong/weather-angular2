@@ -1,0 +1,24 @@
+<div *ngIf="city">
+  <h2>{{cityDisplay | uppercase}}</h2>
+  <div *ngIf="errorMessage">
+    <span class="help-block">{{errorMessage}}</span>
+  </div>
+  <div *ngIf="forecasts.length" class="reveal-animation">
+    <table class="table reveal-animation">
+      <tr>
+        <th>Date</th>
+        <th>Temperature</th>
+        <th>Humidity</th>
+        <th>Wind</th>
+        <th>Pressure</th>
+      </tr>
+      <tr *ngFor="#forecast of forecasts">
+        <td>{{forecast.date}}</td>
+        <td>{{forecast.temp}}</td>
+        <td>{{forecast.humidity}}</td>
+        <td>{{forecast.wind}}</td>
+        <td>{{forecast.pressure}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
