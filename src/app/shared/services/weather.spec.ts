@@ -31,6 +31,26 @@ describe('WeatherService', () => {
     expect(!!weather.http).toEqual(true);
   }));
 
+  it('should format pressure', inject([ WeatherService ], (weatherService) => {
+    expect(weatherService._formatPressure(995.89)).toEqual(99.6);
+  }));
+
+  it('should convert UTC time', inject([ WeatherService ], (weatherService) => {
+    expect(weatherService._convertUTC(1455210000)).toEqual('11/2/2016');
+  }));
+
+  it('should get wind direction', inject([ WeatherService ], (weatherService) => {
+    expect(weatherService._getWindDirection('')).toEqual('');
+    expect(weatherService._getWindDirection(0)).toEqual('N');
+    expect(weatherService._getWindDirection(20)).toEqual('NE');
+    expect(weatherService._getWindDirection(90)).toEqual('E');
+    expect(weatherService._getWindDirection(110)).toEqual('SE');
+    expect(weatherService._getWindDirection(180)).toEqual('S');
+    expect(weatherService._getWindDirection(240)).toEqual('SW');
+    expect(weatherService._getWindDirection(270)).toEqual('W');
+    expect(weatherService._getWindDirection(319)).toEqual('NW');
+  }));
+
   // it('should get data from the server', inject([ WeatherService, MockBackend ], (weather, mockBackend) => {
   //   let response = [{
   //       'dt': 1455210000,

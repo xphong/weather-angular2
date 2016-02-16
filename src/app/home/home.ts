@@ -33,16 +33,8 @@ export class Home {
   searchForWeather() {
     this.weatherService.getForecast(this.city)
         .subscribe(data => {
-          if (data.list && data.list.length > 0) {
-            this.forecasts = data.list.map(forecast => {
-              return {
-                temp: forecast.temp.day + '°C ' + forecast.weather[0].main,
-                date: this._convertUTC(forecast.dt),
-                humidity: forecast.humidity + '%',
-                wind: this._getWindDirection(forecast.deg) + ' ' + forecast.speed + ' km/h',
-                pressure: this._formatPressure(forecast.pressure)
-              };
-            });
+          if (data) {
+            this.forecasts = data;
             this.errorMessage = '';
           } else {
             this.forecasts = [];
@@ -51,7 +43,7 @@ export class Home {
         },
         error => {
           this.forecasts = [];
-          this.errorMessage = error.message
+          this.errorMessage = error.message;
         }
         );
   }
