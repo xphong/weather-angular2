@@ -25,7 +25,6 @@ export class City {
 
     this.city = this.routeParams.get('city');
     this.searchForWeather();
-    this.getCityCountry();
   }
 
   searchForWeather() {
@@ -44,12 +43,5 @@ export class City {
           this.errorMessage = error.message;
         }
         );
-  }
-
-  getCityCountry() {
-    this.weatherService.getCityCountry(this.city)
-        .subscribe(data => {
-          this.cityDisplay = data;
-        });
   }
 }

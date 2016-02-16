@@ -7,6 +7,7 @@ export class WeatherService {
   apiUrl = 'http://api.openweathermap.org/data/2.5/forecast/daily';
   apiKey = '0f39b39c55f9f764c41360fbe41282b7';
   apiOptions = '&cnt=7&mode=json&units=metric&appid=' + this.apiKey;
+  forecastsCached = {};
 
   constructor(public http: Http) {
 
@@ -19,6 +20,8 @@ export class WeatherService {
                     .map(res => {
                       var forecasts,
                           response;
+
+                      this.forecastsCached = res.json();
 
                       response = res.json().list;
 
@@ -35,25 +38,6 @@ export class WeatherService {
                       }
 
                       return forecasts;
-                    })
-                    .catch(this._handleError);
-  }
-
-  getCityCountry(city) {
-    let url = this.apiUrl + '?q=' + city + this.apiOptions;
-
-    return this.http.get(url)
-                    .map(res => {
-                      var city,
-                          response;
-
-                      response = res.json().city;
-
-                      if (response) {
-                        city = response.name + ', ' + response.country;
-                      }
-
-                      return city;
                     })
                     .catch(this._handleError);
   }
