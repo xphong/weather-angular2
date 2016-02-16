@@ -28,10 +28,10 @@ export class WeatherService {
                       if (response && response.length > 0) {
                         forecasts = response.map(forecast => {
                           return {
-                            temp: forecast.temp.day + '°C ' + forecast.weather[0].main,
+                            temp: this._getTemperature(forecast.temp.day, forecast.weather[0].main),
                             date: this._convertUTC(forecast.dt),
-                            humidity: forecast.humidity + '%',
-                            wind: this._getWindDirection(forecast.deg) + ' ' + forecast.speed + ' km/h',
+                            humidity: this._getHumidity(forecast.humidity),
+                            wind: this._getWind(forecast.deg, forecast.speed),
                             pressure: this._formatPressure(forecast.pressure)
                           };
                         });
@@ -47,6 +47,14 @@ export class WeatherService {
     return Observable.throw(error.json().error || 'Server error');
   }
 
+  _getTemperature = function (temp, condition) {
+    return temp + '°C ' + condition;
+  }
+
+  _getHumidity = function (humidity) {
+    return humidity + '%';
+  }
+
   _formatPressure = function (pressure) {
     return Math.round( (pressure / 10) * 10 ) / 10;
   };
@@ -60,7 +68,7 @@ export class WeatherService {
     return day + '/' + month + '/' + year;
   };
 
-  _getWindDirection = function (degrees) {
+  _getWind = function (degrees, speed) {
     let direction;
 
     if (degrees === 0) {
@@ -83,7 +91,7 @@ export class WeatherService {
       direction = '';
     }
 
-    return direction;
+    return speed + ' km/h ' + direction;
   };
 
 }

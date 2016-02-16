@@ -26,9 +26,16 @@ describe('WeatherService', () => {
     WeatherService
   ]);
 
-
   it('should have http', inject([ WeatherService ], (weather) => {
     expect(!!weather.http).toEqual(true);
+  }));
+
+  it('should get temperature', inject([ WeatherService ], (weatherService) => {
+    expect(weatherService._getTemperature(5.11, 'Snow')).toEqual('5.11°C Snow');
+  }));
+
+  it('should get humidity', inject([ WeatherService ], (weatherService) => {
+    expect(weatherService._getHumidity(55)).toEqual('55%');
   }));
 
   it('should format pressure', inject([ WeatherService ], (weatherService) => {
@@ -39,16 +46,16 @@ describe('WeatherService', () => {
     expect(weatherService._convertUTC(1455210000)).toEqual('11/2/2016');
   }));
 
-  it('should get wind direction', inject([ WeatherService ], (weatherService) => {
-    expect(weatherService._getWindDirection('')).toEqual('');
-    expect(weatherService._getWindDirection(0)).toEqual('N');
-    expect(weatherService._getWindDirection(20)).toEqual('NE');
-    expect(weatherService._getWindDirection(90)).toEqual('E');
-    expect(weatherService._getWindDirection(110)).toEqual('SE');
-    expect(weatherService._getWindDirection(180)).toEqual('S');
-    expect(weatherService._getWindDirection(240)).toEqual('SW');
-    expect(weatherService._getWindDirection(270)).toEqual('W');
-    expect(weatherService._getWindDirection(319)).toEqual('NW');
+  it('should get wind', inject([ WeatherService ], (weatherService) => {
+    expect(weatherService._getWind('', 1)).toEqual('1 km/h ');
+    expect(weatherService._getWind(0, 1)).toEqual('1 km/h N');
+    expect(weatherService._getWind(20, 1)).toEqual('1 km/h NE');
+    expect(weatherService._getWind(90, 1)).toEqual('1 km/h E');
+    expect(weatherService._getWind(110, 1)).toEqual('1 km/h SE');
+    expect(weatherService._getWind(180, 1)).toEqual('1 km/h S');
+    expect(weatherService._getWind(240, 1)).toEqual('1 km/h SW');
+    expect(weatherService._getWind(270, 1)).toEqual('1 km/h W');
+    expect(weatherService._getWind(319, 1)).toEqual('1 km/h NW');
   }));
 
   // it('should get data from the server', inject([ WeatherService, MockBackend ], (weather, mockBackend) => {
