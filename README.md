@@ -28,5 +28,4 @@ npm test
 * Webpack
 
 ## TODO
-* Add route for set city
 * Protractor tests
