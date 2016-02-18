@@ -13,7 +13,6 @@ import {WeatherService} from '../shared/services/weather';
 export class City {
   forecasts = [];
   city = '';
-  cityDisplay = '';
   errorMessage = '';
 
   constructor(public weatherService: WeatherService, public routeParams: RouteParams) {
