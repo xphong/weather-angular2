@@ -28,4 +28,3 @@ npm test
 * Webpack
 
 ## TODO
-* Protractor tests
