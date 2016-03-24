@@ -5,9 +5,6 @@ import {WeatherService} from '../shared/services/weather';
 
 @Component({
   selector: 'city',
-  providers: [
-    WeatherService
-  ],
   template: require('./city.html')
 })
 export class City {

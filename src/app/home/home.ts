@@ -6,9 +6,6 @@ import {XLarge} from './directives/x-large';
 
 @Component({
   selector: 'home',
-  providers: [
-    WeatherService
-  ],
   directives: [
     ...FORM_DIRECTIVES,
     XLarge
