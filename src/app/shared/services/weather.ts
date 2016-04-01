@@ -9,14 +9,14 @@ export class WeatherService {
   apiOptions = '&cnt=7&mode=json&units=metric&appid=' + this.apiKey;
   forecastsCached = {};
 
-  constructor(public http: Http) {
+  constructor(private _http: Http) {
 
   }
 
   getForecast(city) {
     let url = this.apiUrl + '?q=' + city + this.apiOptions;
 
-    return this.http.get(url)
+    return this._http.get(url)
                     .map(res => {
                       var forecasts,
                           response;

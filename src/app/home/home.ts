@@ -19,7 +19,7 @@ export class Home {
   city = '';
   errorMessage = '';
 
-  constructor(public weatherService: WeatherService) {
+  constructor(private _weatherService: WeatherService) {
 
   }
 
@@ -28,7 +28,7 @@ export class Home {
   }
 
   searchForWeather() {
-    this.weatherService.getForecast(this.city)
+    this._weatherService.getForecast(this.city)
         .subscribe(data => {
           if (data) {
             this.forecasts = data;

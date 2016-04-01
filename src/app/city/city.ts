@@ -12,19 +12,19 @@ export class City {
   city = '';
   errorMessage = '';
 
-  constructor(public weatherService: WeatherService, public routeParams: RouteParams) {
+  constructor(private _weatherService: WeatherService, private _routeParams: RouteParams) {
 
   }
 
   ngOnInit() {
     console.log('hello `City` component');
 
-    this.city = this.routeParams.get('city');
+    this.city = this._routeParams.get('city');
     this.searchForWeather();
   }
 
   searchForWeather() {
-    this.weatherService.getForecast(this.city)
+    this._weatherService.getForecast(this.city)
         .subscribe(data => {
           if (data) {
             this.forecasts = data;
